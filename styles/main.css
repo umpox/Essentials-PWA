@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.invisible {
+    visibility: hidden;
+}
+html, body {
+    height: 100%;
+    background: #223145;
+}
+#appContainer {
+    min-height: 100%;
+}
+#menuBanner {
+    background: #223145;
+    color: #fdfdfd;
+    text-align: center;
+    position: fixed;
+    height: 78px;
+}
+#menuBanner .menuBanner-content {
+    height:100%;
+}
+.menuBanner-content#menuBanner-content-refresh,
+.menuBanner-content#menuBanner-content-back {
+    line-height: 95px;
+}
+#menuBanner-content-refresh.refresh__rotate img{
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+#newsContentArea, #weatherContentArea, #menuButtonArea, #articleContentArea, #offlineContentArea, #offlineArticleArea {
+    min-height: 76px;
+    margin-top: 78px;
+    background: #223145;
+}
+#articleContentArea, #offlineArticleArea {
+    background-color: #596371;
+    color: #fdfdfd;
+    padding: 10px 20px;
+}
+#articleContentArea p, #offlineArticleArea p {
+    margin-top: 15px;
+    line-height: 25px;
+    font-size: 18px;
+}
+.btnDelete, .btnSave, .ampLoad {
+    width:100%;
+    margin-bottom: 15px;
+}
+.ampLoad {
+    margin-top: 15px;
+}
+#menuButtonArea .menuButtonArea-btn {
+    height: 33.33%;
+    color: #fdfdfd;
+    text-align: center;
+    line-height: 17.5vh;
+    border: 5px solid #596371;
+    border-bottom: 0px;
+    border-radius: 5px;
+}
+#menuButtonArea .menuButtonArea-btn:last-child {
+    border-bottom: 5px solid #596371;
+}
+
+#newsContentArea .newsItem, #offlineContentArea .newsItem {
+    border-top: 2px solid #fdfdfd;
+    border-bottom: 2px solid #fdfdfd;
+    white-space: pre-line;
+    text-align: left;
+    background-color: #596371;
+    color: #fdfdfd;
+}
+.newsItem .newsItem-title {
+    font-size: 20px;
+}
+
+.weatherMain, .newsMain {
+    background-color: #fdfdfd;
+    color: #596371;
+    height: 70px;
+    text-align: center;
+    padding-top: 10px;
+}
+.newsMain {
+    height: 35px;
+}
+.weatherItem {
+    background-color: #596371;
+    height: 110px;
+    padding: 10px;
+}
+.weatherItem h2 {
+    margin-top: 10px;
+    color: #fdfdfd;
+    font-weight: 500;
+}
+.appMenu {
+    position: fixed;
+    bottom: 0vh;
+    background: #fdfdfd;
+}
+.appButtons {
+    background: #223145;
+    height: 75px;
+    text-align: center;
+    color: #fdfdfd;
+    line-height: 75px;
+}
+.appButtons:first-child {
+    border-right: 0.5px solid #fdfdfd;
+}
+#loading {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+/*ANIMATIONS*/
+@keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+    } to { 
+        transform: rotate(360deg); 
+    }
+}

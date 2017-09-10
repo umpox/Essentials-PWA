@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Essentials</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/pure.css">   
+    <link rel="manifest" href="/manifest.json">
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather PWA">
+</head>
+<body>
+    <div id="loading">
+        <img src="resources/loading.svg">
+    </div>
+
+    <div class="pure-g" id="appContainer">
+
+        <div class="pure-menu-horizontal" id="menuBanner">
+            <div class="pure-u-1-3 menuBanner-content hidden" id="menuBanner-content-back" onclick="returnToMenu()">
+            </div>
+            <div class="pure-u-1-3 menuBanner-content" id="menuBanner-content-text">
+                <h1>Menu</h1>
+            </div>
+            <div class="pure-u-1-3 menuBanner-content refresh__rotate hidden" id="menuBanner-content-refresh" onclick="refreshPage()">
+            </div>
+        </div>
+
+        <div class="pure-u-5-5" id="menuButtonArea">
+            <div class="pure-u-24-24 menuButtonArea-btn" onclick="loadNewsData()">
+                <h1>News</h1>
+            </div>
+            <div class="pure-u-24-24 menuButtonArea-btn" onclick="loadWeatherData()">
+                <h1>Weather</h1>
+            </div>
+            <div class="pure-u-24-24 menuButtonArea-btn" onclick="loadOfflineArticles()">
+                <h1>Available Offline</h1>
+            </div>
+        </div>
+
+        <div class="pure-u-5-5 hidden" id="newsContentArea">
+        </div>
+        
+        <div class="pure-u-5-5 hidden" id="articleContentArea">
+        </div>
+
+        <div class="pure-u-5-5 hidden" id="offlineContentArea">
+        </div>        
+
+        <div class="pure-u-5-5 hidden" id="offlineArticleArea">
+        </div>
+
+        <div class="pure-u-5-5 hidden" id="weatherContentArea">
+        </div>
+    </div>
+    <script type='text/javascript' src='scripts/appLogic.js'></script>
+</body>
