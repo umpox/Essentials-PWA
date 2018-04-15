@@ -1,0 +1,24 @@
+{
+  "name": "essentials-pwa",
+  "version": "1.0.0",
+  "description": "A performance-first progressive web application that provides essential news and weather data to users on low bandwidth connections.",
+  "main": "scripts/appLogic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umpox/Essentials-PWA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/umpox/Essentials-PWA/issues"
+  },
+  "homepage": "https://github.com/umpox/Essentials-PWA#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0"
+  }
+}
