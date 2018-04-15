@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+
+// Yes this is ugly - this project should have a front end view layer
 let newsContentArea;
 let weatherContentArea;
 let articleContentArea;
