@@ -235,7 +235,6 @@ const loadNewsData = () => {
 };
 
 const loadArticle = (newsID) => {
-  console.log(newsID);
   loadingIcon.classList.remove('hidden');
   newsContentArea.classList.add('hidden');
 
