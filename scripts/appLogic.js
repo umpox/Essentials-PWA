@@ -105,8 +105,8 @@ const loadOfflineArticles = () => {
     // Loop through database data and display each article as button
     articles.forEach((article) => {
       offlineContentArea.innerHTML += `
-          <a class="pure-u-24-24 pure-button newsItem" onclick="loadOfflineDetails(${articles[article].id})">
-              <p class="newsItem-title">${articles[article].data.title}</p>
+          <a class="pure-u-24-24 pure-button newsItem" onclick="loadOfflineDetails(${article.id})">
+              <p class="newsItem-title">${article.data.title}</p>
           </a>`;
     });
   };
@@ -235,6 +235,7 @@ const loadNewsData = () => {
 };
 
 const loadArticle = (newsID) => {
+  console.log(newsID);
   loadingIcon.classList.remove('hidden');
   newsContentArea.classList.add('hidden');
 
@@ -249,7 +250,7 @@ const loadArticle = (newsID) => {
   window.scrollTo(0, 0);
 
   // API URL to grab news data
-  const apiURL = 'https://www.umpox.com/essentials/data/article.json';
+  const apiURL = `https://www.umpox.com/essentials/data/articles/${newsID}.json`;
 
   // Variables to store article data
   let articleTitle;
