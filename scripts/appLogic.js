@@ -57,7 +57,7 @@ DataStorage.onupgradeneeded = () => {
 };
 
 
-const saveOffline = (articleTitle, articleBody) => {
+const saveOffline = (articleTitle, articleBody, button) => {
   // Access database
   const tx = DataStorage.result.transaction('Articles', 'readwrite');
   const articleList = tx.objectStore('Articles');
@@ -66,7 +66,8 @@ const saveOffline = (articleTitle, articleBody) => {
   articleList.put({ id: new Date().getTime(), data: { title: articleTitle, body: articleBody } });
 
   // Update button text to inform user data has saved
-  this.innerHTML = 'Saved!';
+  const saveButton = button.target;
+  saveButton.innerHTML = 'Saved!';
 };
 
 const loadOfflineArticles = () => {
@@ -282,8 +283,8 @@ const loadArticle = (newsID) => {
 
     // Add event listener to offline button
     const offlineBtn = document.getElementById(newsID);
-    offlineBtn.addEventListener('click', () => {
-      saveOffline(articleTitle, articleBody).bind(this);
+    offlineBtn.addEventListener('click', (event) => {
+      saveOffline(articleTitle, articleBody, event);
     }, true);
   });
 };
