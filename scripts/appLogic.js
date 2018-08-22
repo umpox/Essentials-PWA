@@ -249,7 +249,7 @@ const loadArticle = (newsID) => {
   window.scrollTo(0, 0);
 
   // API URL to grab news data
-  const apiURL = ''; // INSERT API URL HERE
+  const apiURL = 'https://www.umpox.com/essentials/data/article.json';
 
   // Variables to store article data
   let articleTitle;
