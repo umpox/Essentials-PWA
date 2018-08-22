@@ -161,20 +161,18 @@ const deleteOfflineArticle = (articleID) => {
   };
 };
 
-const ApiCall = () => {
-  this.get = (apiURL, apiCallbackFunc) => {
-    const apiRequest = new XMLHttpRequest();
+const apiCall = (apiURL, apiCallbackFunc) => {
+  const apiRequest = new XMLHttpRequest();
 
-    apiRequest.onreadystatechange = () => {
-      if (apiRequest.readyState === 4 && apiRequest.status === 200) {
-        apiCallbackFunc(apiRequest.responseText);
-        refreshIcon.classList.remove('refresh__rotate');
-      }
-    };
-
-    apiRequest.open('GET', apiURL, true);
-    apiRequest.send(null);
+  apiRequest.onreadystatechange = () => {
+    if (apiRequest.readyState === 4 && apiRequest.status === 200) {
+      apiCallbackFunc(apiRequest.responseText);
+      refreshIcon.classList.remove('refresh__rotate');
+    }
   };
+
+  apiRequest.open('GET', apiURL, true);
+  apiRequest.send(null);
 };
 
 const loadNewsData = () => {
@@ -192,7 +190,7 @@ const loadNewsData = () => {
   headerText.innerHTML = '<h1>News</h1>';
 
   // URL to load news data
-  const apiURL = 'https://umpox.com/essentials/data/news.json';
+  const apiURL = 'https://www.umpox.com/essentials/data/news.json';
 
   // Variable to store current updated time
   const currentTime = new Date();
@@ -202,10 +200,8 @@ const loadNewsData = () => {
   let newsDesc = '';
   let newsID;
 
-  // Create new instance of apiCall
-  const newsAPI = new ApiCall();
-
-  newsAPI.get(apiURL, (newsData) => {
+  // Get news data
+  apiCall(apiURL, (newsData) => {
     // Successfully loaded
 
     // Convert string to JSON
@@ -225,10 +221,9 @@ const loadNewsData = () => {
 
     // Loop through articles and display list
     news.forEach((article) => {
-      newsTitle = news[article].webTitle;
-      newsDesc = news[article].fields.trailText;
-      newsID = news[article].id;
-
+      newsTitle = article.webTitle;
+      newsDesc = article.fields.trailText;
+      newsID = article.id;
 
       newsContentArea.innerHTML += `
             <a class="pure-u-24-24 pure-button newsItem" onclick="loadArticle( '${newsID}' )" rel="amphtml">
@@ -261,10 +256,8 @@ const loadArticle = (newsID) => {
   let articleBody;
   let articleURL;
 
-  // Create new APICall instance
-  const articleAPI = new ApiCall();
-
-  articleAPI.get(apiURL, (apiData) => {
+  // Get article data
+  apiCall(apiURL, (apiData) => {
     // Successfully loaded
 
     // Convert string to JSON
@@ -344,7 +337,7 @@ const loadWeatherData = (lat, long) => {
   headerText.innerHTML = '<h1>Weather</h1>';
 
   // URL to load weather data
-  let apiURL = ''; // INSERT API URL HERE
+  let apiURL = 'https://www.umpox.com/essentials/data/weather.json';
 
   // If latitude and longitude is provided adjust API call
   if (lat !== undefined && long !== undefined) {
@@ -360,10 +353,8 @@ const loadWeatherData = (lat, long) => {
   let weatherTemp;
   let weatherCloud;
 
-  // Create new APICall instance
-  const weatherAPI = new ApiCall();
-
-  weatherAPI.get(apiURL, (weatherData) => {
+  // Get weather data
+  apiCall(apiURL, (weatherData) => {
     // Successfully loaded
 
     // Convert string to JSON
@@ -384,11 +375,11 @@ const loadWeatherData = (lat, long) => {
                 <h4 class="newsItem-title">Last updated: ${currentTime.toLocaleTimeString()}</h4>            
             </a>`;
 
-    weatherData.forEach((day) => {
-      weatherDesc = weatherData[day].weather[0].main;
-      weatherTemp = Math.round(weatherData[day].temp.day);
-      weatherCloud = weatherData[day].clouds;
-      weatherDate = weatherData[day].dt;
+    parsedWeatherData.forEach((day) => {
+      weatherDesc = day.weather[0].main;
+      weatherTemp = Math.round(day.temp.day);
+      weatherCloud = day.clouds;
+      weatherDate = day.dt;
 
       // Convert weatherDate to string day name
       weatherDate = convertToDay(weatherDate);
@@ -423,7 +414,7 @@ const refreshPage = () => {
 
     // Remove the cached file
     caches.open('essentialsPWA-v1').then((cache) => {
-      cache.delete('https://umpox.com/essentials/news.json').then(() => {
+      cache.delete('https://www.umpox.com/essentials/news.json').then(() => {
         loadNewsData();
       });
     });
@@ -433,7 +424,7 @@ const refreshPage = () => {
 
     // Removed the cached file
     caches.open('essentialsPWA-v1').then((cache) => {
-      cache.delete('https://umpox.com/essentials/weather.json').then(() => {
+      cache.delete('https://www.umpox.com/essentials/weather.json').then(() => {
         loadWeatherData();
       });
     });
