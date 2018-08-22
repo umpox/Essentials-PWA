@@ -192,7 +192,7 @@ const loadNewsData = () => {
   headerText.innerHTML = '<h1>News</h1>';
 
   // URL to load news data
-  const apiURL = 'https://umpox.github.io/essentials/data/news.json';
+  const apiURL = 'https://umpox.com/essentials/data/news.json';
 
   // Variable to store current updated time
   const currentTime = new Date();
@@ -423,7 +423,7 @@ const refreshPage = () => {
 
     // Remove the cached file
     caches.open('essentialsPWA-v1').then((cache) => {
-      cache.delete('https://umpox.github.io/essentials/news.json').then(() => {
+      cache.delete('https://umpox.com/essentials/news.json').then(() => {
         loadNewsData();
       });
     });
@@ -433,7 +433,7 @@ const refreshPage = () => {
 
     // Removed the cached file
     caches.open('essentialsPWA-v1').then((cache) => {
-      cache.delete('https://umpox.github.io/essentials/weather.json').then(() => {
+      cache.delete('https://umpox.com/essentials/weather.json').then(() => {
         loadWeatherData();
       });
     });
